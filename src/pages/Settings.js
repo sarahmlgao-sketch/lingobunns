@@ -23,6 +23,9 @@ function Settings() {
     },
   });
 
+  const [isScriptLoaded, setIsScriptLoaded] = useState(false);
+
+  // Load settings from storage
   useEffect(() => {
     const saved = loadFromStorage('settings', null);
     if (saved) {
@@ -30,9 +33,63 @@ function Settings() {
     }
   }, []);
 
+  // Save settings to storage
   useEffect(() => {
     saveToStorage('settings', settings);
   }, [settings]);
+
+  // Load ElevenLabs script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/@elevenlabs/convai-widget-embed';
+    script.async = true;
+    script.type = 'text/javascript';
+    
+    script.onload = () => {
+      setIsScriptLoaded(true);
+    };
+    
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup script on unmount
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+    };
+  }, []);
+
+  // Apply volume to ElevenLabs audio when it changes
+  useEffect(() => {
+    if (isScriptLoaded) {
+      const timer = setTimeout(() => {
+        // Find the audio element created by ElevenLabs widget
+        const audioElements = document.querySelectorAll('audio');
+        audioElements.forEach(audio => {
+          audio.volume = settings.volume / 100; // Convert 0-100 to 0-1
+        });
+        
+        // Also try to access through iframe if widget uses one
+        const iframes = document.querySelectorAll('iframe');
+        iframes.forEach(iframe => {
+          try {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow?.document;
+            if (iframeDoc) {
+              const iframeAudio = iframeDoc.querySelectorAll('audio');
+              iframeAudio.forEach(audio => {
+                audio.volume = settings.volume / 100;
+              });
+            }
+          } catch (e) {
+            // Cross-origin iframe, can't access
+            console.log('Cannot access iframe audio (cross-origin)');
+          }
+        });
+      }, 500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [settings.volume, isScriptLoaded]);
 
   const handleVolumeChange = (e) => {
     setSettings(prev => ({ ...prev, volume: parseInt(e.target.value) }));
@@ -75,6 +132,10 @@ function Settings() {
         <div className="settings-header-right">
           <img src={bunBunConfused} alt="BunBun confused" className="settings-bunny" />
         </div>
+      </div>
+
+      <div className="settings-section">
+          <elevenlabs-convai agent-id="agent_9701kend535gef289czv0j7bjh9c" />
       </div>
 
       <div className="settings-section">
