@@ -1,12 +1,32 @@
 ---
 name: first-project
-description: This is a new rule
+description: Documentation standards for the project
 alwaysApply: false
 ---
-This documentation site must use a sidebar
-sidebar categories must be listed alphabetically
-all pages for components must include overview, all variatns, usage guidelines for developers and designers, accessibility considerations, spacing, usage examples, and code developers can copy.
 
-# Overview
+This project’s documentation must follow the rules below.
 
-Insert overview text here. The agent will only see this should they choose to apply the rule.
+## Documentation Structure Rules
+
+- The documentation site **must use a sidebar**.
+- Sidebar categories **must be listed alphabetically**.
+- All **component pages** must include the following sections:
+  - Overview
+  - All variants
+  - Usage guidelines for developers
+  - Usage guidelines for designers
+  - Accessibility considerations
+  - Spacing
+  - Usage examples
+  - Copyable code examples for developers
+
+## Content Requirements
+
+- Sections should be clearly labeled using consistent heading levels.
+- Code examples must be complete, practical, and ready to copy.
+- Accessibility considerations should reference real usage scenarios, not just theory.
+
+## Overview
+
+Insert overview text here.  
+The agent will only see this section if they choose to apply the rule.
