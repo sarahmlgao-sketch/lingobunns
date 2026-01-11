@@ -13,7 +13,7 @@ function Profile() {
     email: '',
     firstName: '',
     lastName: '',
-    dateOfBirth: '',
+    age: '',
     spokenLanguages: [],
     learningLanguages: [],
   });
@@ -128,11 +128,11 @@ function Profile() {
               </div>
 
               <div className="form-group">
-                <label className="form-label">Date of birth</label>
+                <label className="form-label">Age</label>
                 <input
                   type="date"
                   name="dateOfBirth"
-                  value={formData.dateOfBirth}
+                  value={formData.age}
                   onChange={handleInputChange}
                   className="form-input"
                 />
@@ -189,5 +189,19 @@ function Profile() {
     </div>
   );
 }
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.listen();
+app.use(express.json());
+
+app.get('/client', (req, res) => {
+  res.status(200).send({
+    name: formData.username,
+    age: formData.age,
+  });
+});
 
 export default Profile;

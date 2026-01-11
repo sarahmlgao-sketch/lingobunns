@@ -21,7 +21,7 @@ degrees_per_second = 120
 
 # sets speed of audio detection and audio device
 samplerate = 48000
-device_index = 18  # your Stereo Mix (loopback) device
+device_index = 19  # your Stereo Mix (loopback) device
 audio_detected = False
 previous_audio_state = False
 
