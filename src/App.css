@@ -1,18 +1,88 @@
-.App {
-  min-height: 100vh;
-  background-color: #fff;
+html, body {
+  overflow-x: hidden;
 }
 
-.page {
-  padding: 2rem;
+:root{
+  --brown:#5b1a13;
+}
+
+.topnav{
+  background:#fff;
+}
+
+.topnavInner{
+  max-width:1100px;
+  margin:0 auto;
+  padding:20px 20px 14px;
+  display:grid;
+  grid-template-columns: auto 1fr auto;
+  align-items:center;
+}
+
+.navLeft{
+  display:flex;
+  align-items:center;
+  justify-self:start;
+}
+
+.navLogo{
+  height:46px;
+  width:auto;
+  display:block;
+}
+
+.navCenter{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap: clamp(24px, 4vw, 56px);
+}
+
+
+.navItem{
+  display:block;
+  text-decoration:none;
+  opacity:0.7;
+  transition: opacity 0.2s;
+}
+
+.navItem img{
+  height:26px;
+  width:auto;
+  display:block;
+}
+
+.navItem.active{
+  opacity:1;
+}
+
+.navRight{
+  width:auto;
+}
+
+.divider{
+  height:2px;
+  background:var(--brown);
+  opacity:0.6;
+}
+
+/* page container */
+.page{
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.page-image {
+/* page image */
+.page-image{
   width: 100%;
-  max-width: 1100px;
+  max-width: 100%;
   height: auto;
   display: block;
+  object-fit: contain;
 }
+

@@ -1,25 +1,45 @@
-import { NavLink } from 'react-router-dom';
-import '../styles/TopNav.css';
+import { NavLink } from "react-router-dom";
+import homeIcon from "../assets/nav/home.svg";
+import profileIcon from "../assets/nav/profile.svg";
+import progressIcon from "../assets/nav/progress.svg";
+import settingsIcon from "../assets/nav/settings.svg";
 
-function TopNav() {
+export default function TopNav() {
+  const cls = ({ isActive }) =>
+    "navItem" + (isActive ? " active" : "");
+
   return (
-    <nav className="top-nav">
-      <div className="nav-links">
-        <NavLink to="/" className="nav-link" end>
-          home
-        </NavLink>
-        <NavLink to="/profile" className="nav-link">
-          profile
-        </NavLink>
-        <NavLink to="/progress" className="nav-link">
-          progress
-        </NavLink>
-        <NavLink to="/settings" className="nav-link">
-          settings
-        </NavLink>
+    <header className="topnav">
+      <div className="topnavInner">
+        {/* LEFT: logo */}
+        <div className="navLeft">
+          <img src="/logo.svg" alt="lingo bunns" className="navLogo" />
+        </div>
+
+        {/* CENTER: icon nav */}
+        <nav className="navCenter">
+          <NavLink to="/" className={cls} end>
+            <img src={homeIcon} alt="home" />
+          </NavLink>
+
+          <NavLink to="/profile" className={cls}>
+            <img src={profileIcon} alt="profile" />
+          </NavLink>
+
+          <NavLink to="/progress" className={cls}>
+            <img src={progressIcon} alt="progress" />
+          </NavLink>
+
+          <NavLink to="/settings" className={cls}>
+            <img src={settingsIcon} alt="settings" />
+          </NavLink>
+        </nav>
+
+        {/* RIGHT: spacer to keep center actually centered */}
+        <div className="navRight" />
       </div>
-    </nav>
+
+      <div className="divider" />
+    </header>
   );
 }
-
-export default TopNav;
