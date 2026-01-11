@@ -39,8 +39,8 @@ function Home() {
           <h2 className="section-title">Language Level</h2>
           <img src={bunBunStars} alt="BunBun 5 Stars" className="homeLevelImg" />
           <div className="softCard">
-            <p className="subtext">description of language level</p>
-            <p className="subtext">i.e. at this level, kids can maintain kindergarten-level conversation</p>
+            <p className="subtext">Conversationally Fluent</p>
+            <p className="subtext">At this level, kids can maintain grade-level conversation</p>
           </div>
         </div>
 
