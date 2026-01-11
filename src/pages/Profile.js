@@ -190,18 +190,4 @@ function Profile() {
   );
 }
 
-const express = require('express');
-const app = express();
-const port = 3000;
-
-app.listen();
-app.use(express.json());
-
-app.get('/client', (req, res) => {
-  res.status(200).send({
-    name: formData.username,
-    age: formData.age,
-  });
-});
-
 export default Profile;
