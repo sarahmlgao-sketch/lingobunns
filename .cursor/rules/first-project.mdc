@@ -1,0 +1,12 @@
+---
+name: first-project
+description: This is a new rule
+alwaysApply: false
+---
+This documentation site must use a sidebar
+sidebar categories must be listed alphabetically
+all pages for components must include overview, all variatns, usage guidelines for developers and designers, accessibility considerations, spacing, usage examples, and code developers can copy.
+
+# Overview
+
+Insert overview text here. The agent will only see this should they choose to apply the rule.

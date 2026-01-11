@@ -1,0 +1,27 @@
+.top-nav {
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  text-transform: lowercase;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+  color: #4e130f;
+}
+
+.nav-link.active {
+  color: #4e130f;
+  font-weight: 600;
+}
